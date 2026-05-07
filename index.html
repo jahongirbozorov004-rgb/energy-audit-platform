@@ -3,34 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Audit AI</title>
+    <title>Energy Audit AI - Professional</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="bg-green-600 shadow-lg p-4 flex justify-between items-center sticky top-0 z-50 text-white">
-        <div class="text-2xl font-bold text-white">⚡ EnergyAudit AI</div>
-        <div class="space-x-4 text-sm font-medium">
-            <a href="#" class="hover:underline">Dashboard</a>
-            <a href="#" class="hover:underline">Monitoring</a>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> </head>
+<body class="bg-gray-50 text-gray-900 scroll-smooth">
+
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-green-600">⚡ EnergyAudit <span class="text-xs text-gray-400 font-normal">v2.0</span></div>
+        <div class="hidden md:flex space-x-6 font-medium">
+            <a href="#home" class="hover:text-green-500">Asosiy</a>
+            <a href="#audit" class="hover:text-green-500">AI Audit</a>
+            <a href="#dashboard" class="hover:text-green-500">Dashboard</a>
         </div>
+        <button class="bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-bold">Tizimga kirish</button>
     </nav>
 
-    <header class="py-16 px-6 text-center bg-gradient-to-b from-green-100 to-white">
-        <h1 class="text-4xl font-extrabold mb-4 text-green-800">Aqlli Energiya Auditi</h1>
-        <p class="text-gray-600 mb-8 text-lg">Sun'iy intellekt orqali energiya sarfini tahlil qiling.</p>
-        <button class="bg-green-600 text-white px-10 py-4 rounded-full font-bold shadow-lg">Boshlash</button>
+    <header id="home" class="py-20 px-6 text-center bg-gradient-to-br from-green-50 via-white to-blue-50">
+        <h1 class="text-5xl font-black mb-6 tracking-tight text-gray-800">
+            Energiya Sarfini <br><span class="text-green-600 underline">AI bilan boshqaring</span>
+        </h1>
+        <p class="text-gray-600 mb-10 text-xl max-w-2xl mx-auto font-light">
+            Sanoat va xonadonlar uchun energiya samaradorligini tahlil qiluvchi aqlli tizim. 
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="#audit" class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:scale-105 transition">Auditni boshlash</a>
+            <a href="#dashboard" class="bg-white border-2 border-green-600 text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition">Dashboard</a>
+        </div>
     </header>
 
-    <section class="py-12 px-6">
-        <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 max-w-lg mx-auto">
-            <h2 class="text-2xl font-bold mb-6 text-green-700 text-center">AI Auditor</h2>
-            <input type="number" placeholder="Oylik sarf (kWh)" class="w-full p-4 mb-4 bg-gray-50 rounded-xl border border-gray-200 outline-none">
-            <button class="w-full bg-green-500 text-white p-4 rounded-xl font-bold">Hisoblash</button>
+    <section id="audit" class="py-16 px-6">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-[2rem] shadow-2xl border border-gray-100">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">AI Audit Simulator</h2>
+                <p class="text-gray-500">Ma'lumotlarni kiriting, AI tavsiya beradi</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2">Oylik elektr sarfi (kWh):</label>
+                    <input id="kwhInput" type="number" placeholder="Masalan: 500" class="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2">Bino maydoni (m²):</label>
+                    <input id="areaInput" type="number" placeholder="Masalan: 100" class="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none transition">
+                </div>
+            </div>
+            
+            <button onclick="calculateAudit()" class="w-full mt-8 bg-green-600 text-white p-5 rounded-2xl font-black text-lg hover:bg-green-700 shadow-lg transform active:scale-95 transition">
+                AI TAHLILNI BOSHLASH
+            </button>
+
+            <div id="resultBox" class="hidden mt-8 p-6 bg-green-50 rounded-2xl border border-green-200 border-dashed">
+                <h3 class="font-bold text-green-800 text-xl mb-2 italic underline text-center">AI Hisob-kitobi Natijasi:</h3>
+                <p id="resultText" class="text-green-700 text-center font-medium leading-relaxed"></p>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-10 text-center">
-        <p class="opacity-70">&copy; 2026 Energy Audit Platform</p>
+    <section id="dashboard" class="py-16 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Smart Monitoring & Forecasting</h2>
+            <p class="text-gray-400 mb-12 italic">Haqiqiy vaqtdagi energiya tahlili</p>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-700">
+                    <h3 class="mb-4 font-bold text-blue-400 underline decoration-blue-500/30 text-lg">Haftalik sarf jadvali</h3>
+                    <canvas id="energyChart"></canvas>
+                </div>
+                <div class="flex flex-col justify-center space-y-6 text-left">
+                    <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-yellow-500 backdrop-blur-sm">
+                        <span class="text-xs uppercase font-black text-yellow-500">Forecasting (Bashorat)</span>
+                        <p class="text-2xl font-bold">Ertaga: 12.5 kW</p>
+                        <p class="text-sm text-gray-400">Harorat ko'tarilishi sababli sarf 10% ga oshishi mumkin.</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-green-500 backdrop-blur-sm">
+                        <span class="text-xs uppercase font-black text-green-500">Tejamkorlik</span>
+                        <p class="text-2xl font-bold">Jami tejov: 1,450,000 so'm</p>
+                        <p class="text-sm text-gray-400">Oxirgi 30 kun ichida AI maslahatlari asosida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-12 border-t border-gray-100 text-center">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-gray-400 text-sm">&copy; 2026 Energy Audit Platform. Barcha huquqlar himoyalangan.</p>
+            <div class="mt-4 space-x-4 text-xs font-bold text-gray-400">
+                <a href="#" class="hover:text-green-600 uppercase">Telegram</a>
+                <a href="#" class="hover:text-green-600 uppercase">Instagram</a>
+                <a href="#" class="hover:text-green-600 uppercase">LinkedIn</a>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // 1. Audit Hisoblash Funksiyasi
+        function calculateAudit() {
+            const kwh = document.getElementById('kwhInput').value;
+            const area = document.getElementById('areaInput').value;
+            const resultBox = document.getElementById('resultBox');
+            const resultText = document.getElementById('resultText');
+
+            if(kwh > 0 && area > 0) {
+                const efficiency = (kwh / area).toFixed(2);
+                let advice = "";
+                
+                if(efficiency > 10) {
+                    advice = "⚠️ Diqqat! Sizda energiya isrofi yuqori. AI maslahati: Isitish tizimi va izolyatsiyani tekshiring.";
+                } else {
+                    advice = "✅ Zo'r! Energiya samaradorligingiz me'yorida. AI maslahati: Quyosh panellari o'rnatib xarajatni nolga tushiring.";
+                }
+
+                resultText.innerText = `Sizning samaradorlik ko'rsatkichingiz: ${efficiency} kWh/m². \n\n ${advice}`;
+                resultBox.classList.remove('hidden');
+                
+                // Sahifani natijaga qarab siljitish
+                resultBox.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Iltimos, ma'lumotlarni to'liq kiriting!");
+            }
+        }
+
+        // 2. Grafik Chizish (Chart.js)
+        const ctx = document.getElementById('energyChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sha', 'Yak'],
+                datasets: [{
+                    label: 'Sarf (kW)',
+                    data: [12, 19, 15, 17, 14, 22, 10],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                    x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
