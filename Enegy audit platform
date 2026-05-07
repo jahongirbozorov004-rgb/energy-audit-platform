@@ -1,0 +1,251 @@
+# energy-audit-platformexport default function EnergyAuditPlatform() { return ( <div className="min-h-screen bg-slate-950 text-white"> {/* Header */} <header className="flex items-center justify-between px-8 py-5 border-b border-slate-800 bg-slate-900 sticky top-0 z-50"> <div> <h1 className="text-2xl font-bold text-green-400">Energiya Audit Platformasi</h1> <p className="text-sm text-slate-400">AI asosidagi energiya boshqaruv tizimi</p> </div>
+
+<nav className="hidden md:flex gap-6 text-sm text-slate-300">
+      <a href="#home" className="hover:text-green-400">Bosh sahifa</a>
+      <a href="#services" className="hover:text-green-400">Xizmatlar</a>
+      <a href="#dashboard" className="hover:text-green-400">Dashboard</a>
+      <a href="#forecast" className="hover:text-green-400">AI Forecast</a>
+      <a href="#contact" className="hover:text-green-400">Bog‘lanish</a>
+    </nav>
+
+    <button className="bg-green-500 hover:bg-green-600 transition px-5 py-2 rounded-xl font-semibold">
+      Boshlash
+    </button>
+  </header>
+
+  {/* Hero Section */}
+  <section id="home" className="grid lg:grid-cols-2 gap-10 px-8 lg:px-20 py-20 items-center">
+    <div>
+      <h2 className="text-5xl font-bold leading-tight">
+        AI yordamida
+        <span className="text-green-400"> energiya audit </span>
+        va monitoring platformasi
+      </h2>
+
+      <p className="text-slate-300 mt-6 text-lg leading-8">
+        Korxona, stansiya, bino va sanoat obyektlarida elektr,
+        issiqlik va muqobil energiya manbalarini real vaqt rejimida
+        monitoring qilish, tahlil qilish va prognozlash tizimi.
+      </p>
+
+      <div className="flex gap-4 mt-8 flex-wrap">
+        <button className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold">
+          Platformani Ko‘rish
+        </button>
+
+        <button className="border border-slate-700 hover:border-green-400 px-6 py-3 rounded-2xl font-semibold">
+          Demo So‘rash
+        </button>
+      </div>
+    </div>
+
+    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+      <div className="grid grid-cols-2 gap-5">
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">Elektr Sarfi</p>
+          <h3 className="text-3xl font-bold mt-2">12.4 MW</h3>
+          <p className="text-green-400 mt-2">-18% tejash</p>
+        </div>
+
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">AI Forecast</p>
+          <h3 className="text-3xl font-bold mt-2">2027</h3>
+          <p className="text-yellow-400 mt-2">+11% o‘sish</p>
+        </div>
+
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">CO₂ Monitoring</p>
+          <h3 className="text-3xl font-bold mt-2">32 t</h3>
+          <p className="text-green-400 mt-2">Ekologik nazorat</p>
+        </div>
+
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">Qurilmalar</p>
+          <h3 className="text-3xl font-bold mt-2">248</h3>
+          <p className="text-blue-400 mt-2">IoT Sensor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Services */}
+  <section id="services" className="px-8 lg:px-20 py-20 bg-slate-900">
+    <div className="text-center mb-14">
+      <h2 className="text-4xl font-bold">Platforma Imkoniyatlari</h2>
+      <p className="text-slate-400 mt-4 text-lg">
+        Zamonaviy AI va Data Science asosidagi energiya boshqaruvi
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: 'Real-vaqt Monitoring',
+          desc: 'Elektr, issiqlik, gaz va suv sarfini real vaqt rejimida kuzatish.',
+        },
+        {
+          title: 'AI Analitika',
+          desc: 'Energiya isrofi va nosozliklarni sun’iy intellekt orqali aniqlash.',
+        },
+        {
+          title: 'Forecasting',
+          desc: 'Kelajakdagi energiya iste’molini prognoz qilish.',
+        },
+        {
+          title: 'Muqobil Energiya',
+          desc: 'Quyosh va shamol energiyasi samaradorligini hisoblash.',
+        },
+        {
+          title: 'Smart Tavsiyalar',
+          desc: 'Energiya tejash bo‘yicha avtomatik tavsiyalar berish.',
+        },
+        {
+          title: 'Audit Hisobotlari',
+          desc: 'PDF va Excel ko‘rinishidagi professional audit reportlar.',
+        },
+      ].map((item, index) => (
+        <div key={index} className="bg-slate-800 border border-slate-700 rounded-3xl p-7 hover:border-green-400 transition">
+          <h3 className="text-2xl font-bold text-green-400 mb-4">{item.title}</h3>
+          <p className="text-slate-300 leading-7">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* Dashboard */}
+  <section id="dashboard" className="px-8 lg:px-20 py-20">
+    <div className="text-center mb-14">
+      <h2 className="text-4xl font-bold">Smart Dashboard</h2>
+      <p className="text-slate-400 mt-4 text-lg">
+        Energiya monitoringi va AI boshqaruv paneli
+      </p>
+    </div>
+
+    <div className="grid lg:grid-cols-3 gap-8">
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:col-span-2">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-2xl font-bold">Energiya Statistikasi</h3>
+          <span className="bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm">
+            Live Data
+          </span>
+        </div>
+
+        <div className="h-72 bg-slate-800 rounded-2xl flex items-center justify-center text-slate-500 text-lg">
+          Energy Analytics Chart
+        </div>
+      </div>
+
+      <div className="space-y-6">
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+          <h3 className="text-xl font-bold mb-3">AI Alert</h3>
+          <p className="text-slate-300">
+            3-sexdagi elektr sarfi normadan 22% yuqori.
+          </p>
+        </div>
+
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+          <h3 className="text-xl font-bold mb-3">Tejash Tavsiyasi</h3>
+          <p className="text-slate-300">
+            LED tizimiga o‘tish orqali yiliga 18% energiya tejash mumkin.
+          </p>
+        </div>
+
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+          <h3 className="text-xl font-bold mb-3">Muqobil Energiya</h3>
+          <p className="text-slate-300">
+            Quyosh paneli orqali xarajatlarni 30% kamaytirish mumkin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Forecast */}
+  <section id="forecast" className="px-8 lg:px-20 py-20 bg-slate-900">
+    <div className="grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 className="text-4xl font-bold leading-tight">
+          AI orqali energiya iste’molini oldindan bashorat qilish
+        </h2>
+
+        <p className="text-slate-300 mt-6 text-lg leading-8">
+          Platforma Data Science va Machine Learning texnologiyalari
+          yordamida energiya sarfini tahlil qiladi va kelajakdagi
+          iste’molni aniqlaydi.
+        </p>
+
+        <ul className="mt-8 space-y-4 text-slate-300">
+          <li>✅ Qisqa muddatli forecast</li>
+          <li>✅ Yillik energiya prognozi</li>
+          <li>✅ Peak load tahlili</li>
+          <li>✅ AI asosidagi tavsiyalar</li>
+        </ul>
+      </div>
+
+      <div className="bg-slate-800 rounded-3xl p-8 h-96 flex items-center justify-center text-slate-400 text-xl border border-slate-700">
+        AI Forecast Graph
+      </div>
+    </div>
+  </section>
+
+  {/* Contact */}
+  <section id="contact" className="px-8 lg:px-20 py-20">
+    <div className="bg-gradient-to-r from-green-500 to-emerald-700 rounded-[40px] p-10 text-center">
+      <h2 className="text-4xl font-bold">Platformani Ishga Tushirish</h2>
+
+      <p className="mt-5 text-lg text-white/90 max-w-3xl mx-auto leading-8">
+        Korxonangiz uchun AI asosidagi energiya audit va monitoring
+        tizimini joriy qiling.
+      </p>
+
+      <div className="flex justify-center gap-4 mt-8 flex-wrap">
+        <button className="bg-white text-slate-900 px-6 py-3 rounded-2xl font-bold">
+          Demo Olish
+        </button>
+
+        <button className="border border-white px-6 py-3 rounded-2xl font-bold">
+          Bog‘lanish
+        </button>
+      </div>
+    </div>
+  </section>
+
+  {/* Footer */}
+  <footer className="border-t border-slate-800 bg-slate-950 px-8 lg:px-20 py-10">
+    <div className="grid md:grid-cols-3 gap-10">
+      <div>
+        <h3 className="text-2xl font-bold text-green-400">
+          Energiya Audit Platformasi
+        </h3>
+        <p className="text-slate-400 mt-4 leading-7">
+          AI va Data Science asosidagi zamonaviy energiya boshqaruv tizimi.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="text-xl font-semibold mb-4">Bo‘limlar</h4>
+        <ul className="space-y-2 text-slate-400">
+          <li>Bosh sahifa</li>
+          <li>Xizmatlar</li>
+          <li>Dashboard</li>
+          <li>Forecast</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="text-xl font-semibold mb-4">Kontakt</h4>
+        <ul className="space-y-2 text-slate-400">
+          <li>Email: info@energyaudit.uz</li>
+          <li>Telefon: +998 90 123 45 67</li>
+          <li>Toshkent, O‘zbekiston</li>
+        </ul>
+      </div>
+    </div>
+
+    <div className="border-t border-slate-800 mt-10 pt-6 text-center text-slate-500">
+      © 2026 Energiya Audit Platformasi. Barcha huquqlar himoyalangan.
+    </div>
+  </footer>
+</div>
+
+); }
