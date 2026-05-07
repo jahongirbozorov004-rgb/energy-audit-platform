@@ -1,153 +1,251 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Audit Platform - Tizim</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .sidebar-item:hover { background: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; }
-    </style>
-</head>
-<body class="bg-slate-100 font-sans">
+export default function EnergyAuditPlatform() { return ( <div className="min-h-screen bg-slate-950 text-white"> {/* Header */} <header className="flex items-center justify-between px-8 py-5 border-b border-slate-800 bg-slate-900 sticky top-0 z-50"> <div> <h1 className="text-2xl font-bold text-green-400">Energiya Audit Platformasi</h1> <p className="text-sm text-slate-400">AI asosidagi energiya boshqaruv tizimi</p> </div>
 
-    <div id="loginPage" class="fixed inset-0 z-[100] flex items-center justify-center bg-gradient-to-br from-green-600 to-blue-700 p-6">
-        <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl w-full max-w-md text-center">
-            <div class="mb-6">
-                <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span class="text-3xl">⚡</span>
-                </div>
-                <h2 class="text-3xl font-black text-gray-800 tracking-tight">Xush Kelibsiz</h2>
-                <p class="text-gray-500 mt-2">Tizimga kirish uchun ma'lumotlarni kiriting</p>
-            </div>
-            <div class="space-y-4">
-                <input id="username" type="text" placeholder="Login (admin)" class="w-full p-4 border rounded-2xl outline-none focus:ring-2 focus:ring-green-500">
-                <input id="password" type="password" placeholder="Parol (12345)" class="w-full p-4 border rounded-2xl outline-none focus:ring-2 focus:ring-green-500">
-                <button onclick="checkLogin()" class="w-full bg-green-600 text-white p-4 rounded-2xl font-bold shadow-lg hover:bg-green-700 transition">KIRISH</button>
-            </div>
-            <p id="errorMsg" class="text-red-500 mt-4 hidden text-sm font-medium">⚠️ Login yoki parol xato!</p>
+<nav className="hidden md:flex gap-6 text-sm text-slate-300">
+      <a href="#home" className="hover:text-green-400">Bosh sahifa</a>
+      <a href="#services" className="hover:text-green-400">Xizmatlar</a>
+      <a href="#dashboard" className="hover:text-green-400">Dashboard</a>
+      <a href="#forecast" className="hover:text-green-400">AI Forecast</a>
+      <a href="#contact" className="hover:text-green-400">Bog‘lanish</a>
+    </nav>
+
+    <button className="bg-green-500 hover:bg-green-600 transition px-5 py-2 rounded-xl font-semibold">
+      Boshlash
+    </button>
+  </header>
+
+  {/* Hero Section */}
+  <section id="home" className="grid lg:grid-cols-2 gap-10 px-8 lg:px-20 py-20 items-center">
+    <div>
+      <h2 className="text-5xl font-bold leading-tight">
+        AI yordamida
+        <span className="text-green-400"> energiya audit </span>
+        va monitoring platformasi
+      </h2>
+
+      <p className="text-slate-300 mt-6 text-lg leading-8">
+        Korxona, stansiya, bino va sanoat obyektlarida elektr,
+        issiqlik va muqobil energiya manbalarini real vaqt rejimida
+        monitoring qilish, tahlil qilish va prognozlash tizimi.
+      </p>
+
+      <div className="flex gap-4 mt-8 flex-wrap">
+        <button className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold">
+          Platformani Ko‘rish
+        </button>
+
+        <button className="border border-slate-700 hover:border-green-400 px-6 py-3 rounded-2xl font-semibold">
+          Demo So‘rash
+        </button>
+      </div>
+    </div>
+
+    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+      <div className="grid grid-cols-2 gap-5">
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">Elektr Sarfi</p>
+          <h3 className="text-3xl font-bold mt-2">12.4 MW</h3>
+          <p className="text-green-400 mt-2">-18% tejash</p>
         </div>
+
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">AI Forecast</p>
+          <h3 className="text-3xl font-bold mt-2">2027</h3>
+          <p className="text-yellow-400 mt-2">+11% o‘sish</p>
+        </div>
+
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">CO₂ Monitoring</p>
+          <h3 className="text-3xl font-bold mt-2">32 t</h3>
+          <p className="text-green-400 mt-2">Ekologik nazorat</p>
+        </div>
+
+        <div className="bg-slate-800 rounded-2xl p-5">
+          <p className="text-slate-400 text-sm">Qurilmalar</p>
+          <h3 className="text-3xl font-bold mt-2">248</h3>
+          <p className="text-blue-400 mt-2">IoT Sensor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Services */}
+  <section id="services" className="px-8 lg:px-20 py-20 bg-slate-900">
+    <div className="text-center mb-14">
+      <h2 className="text-4xl font-bold">Platforma Imkoniyatlari</h2>
+      <p className="text-slate-400 mt-4 text-lg">
+        Zamonaviy AI va Data Science asosidagi energiya boshqaruvi
+      </p>
     </div>
 
-    <div id="mainPlatform" class="hidden min-h-screen flex">
-        
-        <aside class="w-64 bg-white shadow-xl hidden lg:flex flex-col sticky top-0 h-screen">
-            <div class="p-6 border-b">
-                <h1 class="text-xl font-bold text-green-600 uppercase tracking-wider italic">Energy Audit</h1>
-            </div>
-            <nav class="flex-1 p-4 space-y-2">
-                <div class="sidebar-item p-4 rounded-xl cursor-pointer font-bold text-green-700">📊 Dashboard</div>
-                <div class="sidebar-item p-4 rounded-xl cursor-pointer text-gray-500">📈 Analitika</div>
-                <div class="sidebar-item p-4 rounded-xl cursor-pointer text-gray-500">🔮 Bashorat (AI)</div>
-                <div class="sidebar-item p-4 rounded-xl cursor-pointer text-gray-500">📄 Hisobotlar</div>
-                <div class="sidebar-item p-4 rounded-xl cursor-pointer text-gray-500">⚙️ Sozlamalar</div>
-            </nav>
-            <div class="p-4 border-t">
-                <button onclick="location.reload()" class="w-full bg-gray-100 p-3 rounded-xl text-sm font-bold text-red-500">Chiqish</button>
-            </div>
-        </aside>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: 'Real-vaqt Monitoring',
+          desc: 'Elektr, issiqlik, gaz va suv sarfini real vaqt rejimida kuzatish.',
+        },
+        {
+          title: 'AI Analitika',
+          desc: 'Energiya isrofi va nosozliklarni sun’iy intellekt orqali aniqlash.',
+        },
+        {
+          title: 'Forecasting',
+          desc: 'Kelajakdagi energiya iste’molini prognoz qilish.',
+        },
+        {
+          title: 'Muqobil Energiya',
+          desc: 'Quyosh va shamol energiyasi samaradorligini hisoblash.',
+        },
+        {
+          title: 'Smart Tavsiyalar',
+          desc: 'Energiya tejash bo‘yicha avtomatik tavsiyalar berish.',
+        },
+        {
+          title: 'Audit Hisobotlari',
+          desc: 'PDF va Excel ko‘rinishidagi professional audit reportlar.',
+        },
+      ].map((item, index) => (
+        <div key={index} className="bg-slate-800 border border-slate-700 rounded-3xl p-7 hover:border-green-400 transition">
+          <h3 className="text-2xl font-bold text-green-400 mb-4">{item.title}</h3>
+          <p className="text-slate-300 leading-7">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-        <main class="flex-1 p-8 overflow-y-auto">
-            <header class="flex justify-between items-center mb-10">
-                <div>
-                    <h2 class="text-3xl font-black text-gray-800">Boshqaruv Paneli</h2>
-                    <p class="text-gray-500 font-medium">Real-vaqt rejimida monitoring</p>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="text-right">
-                        <p class="font-bold text-sm">Administrator</p>
-                        <p class="text-xs text-green-500">Online</p>
-                    </div>
-                    <div class="w-12 h-12 bg-green-600 rounded-2xl flex items-center justify-center text-white font-bold">A</div>
-                </div>
-            </header>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-                    <p class="text-gray-400 text-xs font-bold uppercase mb-1">Elektr Sarfi</p>
-                    <p class="text-2xl font-black">1,240 kW/h</p>
-                    <span class="text-green-500 text-xs font-bold">↑ 4.3% o'sish</span>
-                </div>
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-                    <p class="text-gray-400 text-xs font-bold uppercase mb-1">Gaz Sarfi</p>
-                    <p class="text-2xl font-black">450 m³</p>
-                    <span class="text-red-500 text-xs font-bold">↓ 1.2% kamayish</span>
-                </div>
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-                    <p class="text-gray-400 text-xs font-bold uppercase mb-1">AI Bashorati</p>
-                    <p class="text-2xl font-black">89% Aniq</p>
-                    <span class="text-blue-500 text-xs font-bold font-italic">Optimal rejim</span>
-                </div>
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-                    <p class="text-gray-400 text-xs font-bold uppercase mb-1">Tejamkorlik</p>
-                    <p class="text-2xl font-black">$340</p>
-                    <span class="text-green-500 text-xs font-bold italic">Bu oydagi tejov</span>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-lg border border-gray-50">
-                    <h3 class="font-black mb-6 text-gray-700 underline decoration-green-500 decoration-4">Energiya Iste'moli Tahlili</h3>
-                    <canvas id="mainChart"></canvas>
-                </div>
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-lg border border-gray-50">
-                    <h3 class="font-black mb-6 text-gray-700 underline decoration-blue-500 decoration-4">AI Bashorati (Kelajak)</h3>
-                    <canvas id="predictChart"></canvas>
-                </div>
-            </div>
-        </main>
+  {/* Dashboard */}
+  <section id="dashboard" className="px-8 lg:px-20 py-20">
+    <div className="text-center mb-14">
+      <h2 className="text-4xl font-bold">Smart Dashboard</h2>
+      <p className="text-slate-400 mt-4 text-lg">
+        Energiya monitoringi va AI boshqaruv paneli
+      </p>
     </div>
 
-    <script>
-        // TIZIMGA KIRISHNI TEKSHIRISH
-        function checkLogin() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            const error = document.getElementById('errorMsg');
+    <div className="grid lg:grid-cols-3 gap-8">
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:col-span-2">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-2xl font-bold">Energiya Statistikasi</h3>
+          <span className="bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm">
+            Live Data
+          </span>
+        </div>
 
-            if(user === 'admin' && pass === '12345') {
-                document.getElementById('loginPage').classList.add('hidden');
-                document.getElementById('mainPlatform').classList.remove('hidden');
-                loadCharts(); // Grafiklarni yuklash
-            } else {
-                error.classList.remove('hidden');
-            }
-        }
+        <div className="h-72 bg-slate-800 rounded-2xl flex items-center justify-center text-slate-500 text-lg">
+          Energy Analytics Chart
+        </div>
+      </div>
 
-        // GRAFIKLARNI CHIZISH
-        function loadCharts() {
-            // Iste'mol tahlili
-            new Chart(document.getElementById('mainChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Yan', 'Feb', 'Mar', 'Apr', 'May', 'Iyun'],
-                    datasets: [{
-                        label: 'Haqiqiy iste\'mol',
-                        data: [65, 59, 80, 81, 56, 55],
-                        backgroundColor: '#10b981',
-                        borderRadius: 10
-                    }]
-                }
-            });
+      <div className="space-y-6">
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+          <h3 className="text-xl font-bold mb-3">AI Alert</h3>
+          <p className="text-slate-300">
+            3-sexdagi elektr sarfi normadan 22% yuqori.
+          </p>
+        </div>
 
-            // Bashorat tahlili
-            new Chart(document.getElementById('predictChart'), {
-                type: 'line',
-                data: {
-                    labels: ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba'],
-                    datasets: [{
-                        label: 'Kutilayotgan sarf',
-                        data: [30, 45, 35, 50],
-                        borderColor: '#3b82f6',
-                        tension: 0.4,
-                        fill: true,
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)'
-                    }]
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+          <h3 className="text-xl font-bold mb-3">Tejash Tavsiyasi</h3>
+          <p className="text-slate-300">
+            LED tizimiga o‘tish orqali yiliga 18% energiya tejash mumkin.
+          </p>
+        </div>
+
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+          <h3 className="text-xl font-bold mb-3">Muqobil Energiya</h3>
+          <p className="text-slate-300">
+            Quyosh paneli orqali xarajatlarni 30% kamaytirish mumkin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Forecast */}
+  <section id="forecast" className="px-8 lg:px-20 py-20 bg-slate-900">
+    <div className="grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 className="text-4xl font-bold leading-tight">
+          AI orqali energiya iste’molini oldindan bashorat qilish
+        </h2>
+
+        <p className="text-slate-300 mt-6 text-lg leading-8">
+          Platforma Data Science va Machine Learning texnologiyalari
+          yordamida energiya sarfini tahlil qiladi va kelajakdagi
+          iste’molni aniqlaydi.
+        </p>
+
+        <ul className="mt-8 space-y-4 text-slate-300">
+          <li>✅ Qisqa muddatli forecast</li>
+          <li>✅ Yillik energiya prognozi</li>
+          <li>✅ Peak load tahlili</li>
+          <li>✅ AI asosidagi tavsiyalar</li>
+        </ul>
+      </div>
+
+      <div className="bg-slate-800 rounded-3xl p-8 h-96 flex items-center justify-center text-slate-400 text-xl border border-slate-700">
+        AI Forecast Graph
+      </div>
+    </div>
+  </section>
+
+  {/* Contact */}
+  <section id="contact" className="px-8 lg:px-20 py-20">
+    <div className="bg-gradient-to-r from-green-500 to-emerald-700 rounded-[40px] p-10 text-center">
+      <h2 className="text-4xl font-bold">Platformani Ishga Tushirish</h2>
+
+      <p className="mt-5 text-lg text-white/90 max-w-3xl mx-auto leading-8">
+        Korxonangiz uchun AI asosidagi energiya audit va monitoring
+        tizimini joriy qiling.
+      </p>
+
+      <div className="flex justify-center gap-4 mt-8 flex-wrap">
+        <button className="bg-white text-slate-900 px-6 py-3 rounded-2xl font-bold">
+          Demo Olish
+        </button>
+
+        <button className="border border-white px-6 py-3 rounded-2xl font-bold">
+          Bog‘lanish
+        </button>
+      </div>
+    </div>
+  </section>
+
+  {/* Footer */}
+  <footer className="border-t border-slate-800 bg-slate-950 px-8 lg:px-20 py-10">
+    <div className="grid md:grid-cols-3 gap-10">
+      <div>
+        <h3 className="text-2xl font-bold text-green-400">
+          Energiya Audit Platformasi
+        </h3>
+        <p className="text-slate-400 mt-4 leading-7">
+          AI va Data Science asosidagi zamonaviy energiya boshqaruv tizimi.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="text-xl font-semibold mb-4">Bo‘limlar</h4>
+        <ul className="space-y-2 text-slate-400">
+          <li>Bosh sahifa</li>
+          <li>Xizmatlar</li>
+          <li>Dashboard</li>
+          <li>Forecast</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="text-xl font-semibold mb-4">Kontakt</h4>
+        <ul className="space-y-2 text-slate-400">
+          <li>Email: info@energyaudit.uz</li>
+          <li>Telefon: +998 90 123 45 67</li>
+          <li>Toshkent, O‘zbekiston</li>
+        </ul>
+      </div>
+    </div>
+
+    <div className="border-t border-slate-800 mt-10 pt-6 text-center text-slate-500">
+      © 2026 Energiya Audit Platformasi. Barcha huquqlar himoyalangan.
+    </div>
+  </footer>
+</div>
+
+); }
